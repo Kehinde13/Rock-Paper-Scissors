@@ -17,6 +17,10 @@
     margin: 50px auto;
 }
 
+span {
+    font-weight: bold;
+}
+
 .score {
     font-size: 1.2rem;
     font-style: italic;

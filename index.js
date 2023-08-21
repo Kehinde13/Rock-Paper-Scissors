@@ -1,20 +1,16 @@
-const rock = document.querySelector("#rock")
-const paper = document.querySelector("#paper")
-const scissors = document.querySelector("#scissors")
 const output = document.querySelector("#output")
-const computerScore = document.querySelector("#computerScore")
-const playerScore = document.querySelector("#playerScore")
-
-
-
+let computerScore = document.querySelector(".computerScore")
+let playerScore = document.querySelector(".playerScore")
+const buttons = Array.from(document.querySelectorAll("button")) 
+let playerChoice;
 let ChoicesArr = ['rock', 'paper', 'scissors']
+
+/* console.log(buttons); */
 
 function getComputerChoice() {
     let choice = Math.floor((Math.random() * 3) + 1)
     return ChoicesArr[choice - 1];
 }
-
-
 
 function playRound(computer, player) {
     if (computer == "rock" && player == "rock"){
@@ -42,42 +38,36 @@ function playRound(computer, player) {
 
 
 
-
-
- /*
+function playGame() {
+   let score1 = 0;
+   let score2 = 0;
 
    
-
-
-
-function playGame() {
-    let computerScore = 0;
-    let playerScore = 0;
-    let gamePlayed = 0;
     //loop to call the playround 5 times
-    for(let i = gamePlayed; i < 5; i++) {
+    for(let i = 0; i < 5; i++) {
         //for every iteration call plyRound and save the result
-     let result = playRound(getComputerChoice(), getPlayerChoice())
+     let result = playRound(getComputerChoice(), playerChoice)
      console.log(result);
      //increase the score based on the result
      if(result.includes("win")){
-        playerScore += 1
+        score1 += 1
      } else if (result.includes("lose")){
-        computerScore += 1
+        score2 += 1
      }
-    }
-    
-    //output the final score
-    if (computerScore > playerScore) {
-        console.log(`you lose by ${computerScore} to ${playerScore}`);
-    } else if(playerScore > computerScore) {
-        console.log(`you win by ${playerScore} to ${computerScore}`);
-    } else {
-        console.log('tie game');
+
+     computerScore.innerText = `${score2}`;
+     playerScore.innerText = `${score1}`;
+
     }
 }
 
-playGame()
+buttons.forEach((button) => {
+   button.addEventListener('click', () => {
+      playerChoice = button.className;
+      console.log(playerChoice);
+      playGame()
+   })
+})
 
 
 
@@ -85,4 +75,6 @@ playGame()
 
 
 
- */
+
+
+ 
