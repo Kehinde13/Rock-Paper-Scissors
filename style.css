@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    padding: 10px;
+    width: 100%;
+}
+
+.choice {
+    width: 50%;
+    padding: 10px;
+    margin: 50px auto;
+}
+
+.score {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.buttons button {
+    font-size: 120px;
+    margin: 10px;
+    cursor: pointer;
+}

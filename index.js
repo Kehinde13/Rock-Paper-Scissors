@@ -1,39 +1,19 @@
+const rock = document.querySelector("#rock")
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors")
+const output = document.querySelector("#output")
+const computerScore = document.querySelector("#computerScore")
+const playerScore = document.querySelector("#playerScore")
+
+
 
 let ChoicesArr = ['rock', 'paper', 'scissors']
- alert("Hello")
-
 
 function getComputerChoice() {
-    //get a random number between 1 and 3
     let choice = Math.floor((Math.random() * 3) + 1)
-    
-    //use the number to get a random choice from the array
     return ChoicesArr[choice - 1];
 }
 
-
-//get player choice function
-function getPlayerChoice() {
-    //ask for player choice
-    let playerChoice = prompt("Rock, Paper or Scissors: ")
-
-    //check if player choice is null
-    if(playerChoice == null ){
-        alert("Try Again")
-        return
-    }
-
-
-    if (playerChoice.toLowerCase() === 'rock') {
-        return ChoicesArr[0];
-    } else if (playerChoice.toLowerCase() === 'paper') {
-        return ChoicesArr[1]
-    } else if(playerChoice.toLowerCase() === 'scissors') {
-        return ChoicesArr[2]
-    } else {
-        return undefined
-    }
-}
 
 
 function playRound(computer, player) {
@@ -59,7 +39,12 @@ function playRound(computer, player) {
         return "lose you choose wrong"
      }
 }
- 
+
+
+
+
+
+ /*
 
    
 
@@ -100,3 +85,4 @@ playGame()
 
 
 
+ */
