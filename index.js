@@ -1,10 +1,13 @@
 const output = document.querySelector("#output")
+const buttons = Array.from(document.querySelectorAll("button")) 
+const modal = document.querySelector("#modal")
+const modalContent = document.querySelector(".modalContent")
+const playAgain = document.querySelector("#playAgain")
 let displayComputerScore = document.querySelector(".computerScore")
 let displayPlayerScore = document.querySelector(".playerScore")
-const buttons = Array.from(document.querySelectorAll("button")) 
 let playerChoice;
 let playerScore = 0;
-let computerScore = 0
+let computerScore = 0;
 let ChoicesArr = ['rock', 'paper', 'scissors']
 
 
@@ -24,47 +27,56 @@ function playRound(computer, player) {
         output.innerText = "tie paper and paper"
         return "tie"
      } else if(computer == "rock" && player == "scissors"){
-        output.innerText = "lose rock beat scissors"
+        output.innerText = "you lose rock beat scissors"
         return 'lose'
      } else if(computer == "scissors" && player == "rock"){
-        output.innerText = "win rock beat scissors"
+        output.innerText = "you win rock beat scissors"
         return "win"
      } else if(computer == "paper" && player == "rock"){
-        output.innerText = "lose paper beat rock"
+        output.innerText = "you lose paper beat rock"
         return 'lose'
      } else if(computer == "rock" && player == "paper"){
-        output.innerText = "win paper beat rock"
+        output.innerText = "you win paper beat rock"
         return "win"
      } else if(computer == "paper" && player == "scissors"){
-        output.innerText = "win scissors beat paper"
+        output.innerText = "you win scissors beat paper"
         return "win"
      } else if(computer == "scissors" && player == "paper"){
-        output.innerText = "lose scissors beat paper"
+        output.innerText = "you lose scissors beat paper"
         return 'lose'
      }
 }
 
 function playGame() {
      let result = playRound(getComputerChoice(), playerChoice)
-     console.log(result);
-     if(result.includes("win")){
+     if(result === "win"){
       displayPlayerScore.innerText = `${++playerScore}`;  
-     } else if (result.includes("lose")){
+     } else if (result === "lose"){
       displayComputerScore.innerText = `${++computerScore}`;
      }  
 }
 
 buttons.forEach((button) => {
    button.addEventListener('click', () => {
+      //set playerChoice to the current button clicked
       playerChoice = button.className;
       if(playerScore === 5){
-        alert("You Win Refresh to play again")
+        modal.style.display = "block"
+        modalContent.children[0].textContent = 'YOU WON'
+        modalContent.children[1].textContent = `${playerScore} - ${computerScore}`
       } else if(computerScore === 5) {
-         alert("You lose Refresh to play again")
+         modal.style.display = "block"
+         modalContent.children[0].textContent = 'YOU LOST'
+         modalContent.children[1].textContent = `${playerScore} - ${computerScore}`
       } else {
          playGame()
       } 
    })
+})
+
+playAgain.addEventListener('click', () => {
+   /* this method reloads the current page */
+   location.reload()
 })
 
 
